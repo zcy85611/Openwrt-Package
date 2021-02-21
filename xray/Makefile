@@ -45,7 +45,7 @@ define Build/Compile
 	$(call GoPackage/Build/Compile)
 	mv -f $(GO_PKG_BUILD_BIN_DIR)/main $(GO_PKG_BUILD_BIN_DIR)/xray
 	$(STAGING_DIR_HOST)/bin/upx --lzma --best $(GO_PKG_BUILD_BIN_DIR)/xray || true
-endif
+endef
 
 define Package/xray-core/install
 	$(INSTALL_DIR) $(1)/usr/bin/
