@@ -8,7 +8,7 @@ PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://codeload.github.com/XTLS/Xray-core/tar.gz/v$(PKG_VERSION)?
 PKG_HASH:=1125af4411655abf47913af14a22fd7e2b13371e3566cc03676207519b0fe407
 
-PKG_MAINTAINER:=Tianling Shen <cnsztl@project-openwrt.eu.org>
+PKG_MAINTAINER:=Leo Zhao <cnsztl@project-openwrt.eu.org>
 PKG_LICENSE:=MPL-2.0
 PKG_LICENSE_FILES:=LICENSE
 
@@ -27,15 +27,15 @@ GO_PKG_LDFLAGS_X:= \
 include $(INCLUDE_DIR)/package.mk
 include ../../lang/golang/golang-package.mk
 
-define Package/xray-core
+define Package/xray-LZMA
   TITLE:=A platform for building proxies to bypass network restrictions
   SECTION:=net
   CATEGORY:=Network
-  URL:=https://xray.sh
+  URL:=https://github.com/XTLS/Xray-core
   DEPENDS:=$(GO_ARCH_DEPENDS) +ca-bundle
 endef
 
-define Package/xray-core/description
+define Package/xray-LZMA/description
   Xray, Penetrates Everything. Also the best v2ray-core, with XTLS support. Fully compatible configuration.
   It secures your network connections and thus protects your privacy.
 endef
@@ -47,9 +47,9 @@ define Build/Compile
 	$(STAGING_DIR_HOST)/bin/upx --lzma --best $(GO_PKG_BUILD_BIN_DIR)/xray || true
 endef
 
-define Package/xray-core/install
+define Package/xray-LZMA/install
 	$(INSTALL_DIR) $(1)/usr/bin/
 	$(INSTALL_BIN) $(GO_PKG_BUILD_BIN_DIR)/xray $(1)/usr/bin
 endef
 
-$(eval $(call BuildPackage,xray-core))
+$(eval $(call BuildPackage,xray-LZMA))
