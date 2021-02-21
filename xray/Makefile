@@ -27,30 +27,17 @@ GO_PKG_LDFLAGS_X:= \
 include $(INCLUDE_DIR)/package.mk
 include ../../lang/golang/golang-package.mk
 
-define Package/xray/template
+define Package/xray-core
   TITLE:=A platform for building proxies to bypass network restrictions
   SECTION:=net
   CATEGORY:=Network
   URL:=https://xray.sh
-endef
-
-define Package/xray-core
-  $(call Package/xray/template)
   DEPENDS:=$(GO_ARCH_DEPENDS) +ca-bundle
-  PROVIDES:=v2ray-core
-endef
-
-define Package/xray/description
-  Xray, Penetrates Everything. Also the best v2ray-core, with XTLS support. Fully compatible configuration.
-  It secures your network connections and thus protects your privacy.
 endef
 
 define Package/xray-core/description
-        $(call Package/xray/description)
-endef
-
-define Build/Prepare
-	$(call Build/Prepare/Default)
+  Xray, Penetrates Everything. Also the best v2ray-core, with XTLS support. Fully compatible configuration.
+  It secures your network connections and thus protects your privacy.
 endef
 
 define Build/Compile
