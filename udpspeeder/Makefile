@@ -54,4 +54,4 @@ define Package/udpspeeder-tunnel/install
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/speederv2_cross $(1)/usr/bin/udpspeeder
 endef
 
-$(eval $(call BuildPackage,udpspeeder))
+$(eval $(call BuildPackage,udpspeeder-tunnel))
